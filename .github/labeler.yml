@@ -1,0 +1,10 @@
+ドキュメント更新:
+  - docs/**
+
+会計報告更新:
+  - financial_reporting/**
+
+GitHub Actions:
+  - .github/workflows/**
+  - .github/labeler.yml
+  - .github/labels.yml

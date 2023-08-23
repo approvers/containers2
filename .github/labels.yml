@@ -1,0 +1,6 @@
+- name: 'Container'
+  color: '9df5ec'
+- name: 'Documentation'
+  color: 'c29df5'
+- name: 'renovate'
+  color: 'f5dfb3'
