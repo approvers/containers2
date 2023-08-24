@@ -22,4 +22,5 @@ gpg --homedir "$temp_gpg_dir" --quiet --batch --import "$pubkey_file"
 
 for encrypt_file in "$@"; do
   gpg --homedir "$temp_gpg_dir" --quiet --batch --yes --encrypt --recipient "$PGP_RECIPIENT" --trust-model always --armor --output "$encrypt_file.secret" "$encrypt_file"
+  rm -f "$encrypt_file"
 done
