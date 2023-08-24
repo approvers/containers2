@@ -1,0 +1,5 @@
+services:
+  hello_world:
+    image: debian:latest
+    command: bash -c 'while true; do echo "Hello World"; sleep 1; done'
+    restart: always

@@ -1,0 +1,46 @@
+name: Deploy to remote server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup | SSH config
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          umask 077
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_remote
+          cat << EOF > ~/.ssh/config
+          Host remote
+            HostName $SSH_HOST
+            User $SSH_USER
+            Port $SSH_PORT
+            IdentityFile ~/.ssh/id_remote
+          EOF
+          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Setup | Docker context
+        run: docker context create remote --docker "host=ssh://remote"
+
+      - name: Deploy | Docker compose
+        run: |
+          find . -name compose.yml -type f -maxdepth 2 -print0 | while IFS= read -r -d '' compose_file; do
+            workdir=$(dirname "$compose_file")
+            echo "Deploying $workdir"
+
+            cd "$workdir"
+            docker --context remote compose up -d
+          done
