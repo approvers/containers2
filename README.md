@@ -20,6 +20,7 @@
 1. `<repository root>/encrypt.sh` を使ってファイルを暗号化する．(実行例: `./encrypt.sh .env`)
 1. `.env` が削除され， `.env.secret` が作成される．
 1. `.env.secret` をコミット & プッシュする．
+1. 場合に応じて， `.env.example` などを作成するといいでしょう．
 
 ## 注意
 
