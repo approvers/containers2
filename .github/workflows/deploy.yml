@@ -32,6 +32,11 @@ jobs:
           EOF
           echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
 
+      - name: Setup | PGP private key
+        env:
+          PGP_PRIVATE_KEY: ${{ secrets.PGP_PRIVATE_KEY }}
+        run: gpg --quiet --batch --yes --import <(echo "$PGP_PRIVATE_KEY")
+
       - name: Setup | Docker context
         run: docker context create remote --docker "host=ssh://remote"
 
@@ -39,8 +44,13 @@ jobs:
         run: |
           find . -name compose.yml -type f -maxdepth 2 -print0 | while IFS= read -r -d '' compose_file; do
             workdir=$(dirname "$compose_file")
+            cd "$workdir"
             echo "Deploying $workdir"
 
-            cd "$workdir"
+            find . -name '*.secret' -type f -print0 | while IFS= read -r -d '' secret_file; do
+              echo "  Decrypting $secret_file"
+              gpg --quiet --batch --yes --decrypt --output "${secret_file%.*}" "$secret_file"
+            done
+
             docker --context remote compose up -d
           done
