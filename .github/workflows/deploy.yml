@@ -3,7 +3,7 @@ name: Deploy to remote server
 on:
   push:
     branches:
-      - shun-shobon/add-secret
+      - main
 
 jobs:
   deploy:
@@ -48,6 +48,7 @@ jobs:
             echo "Deploying $workdir"
 
             find . -name '*.secret' -type f -print0 | while IFS= read -r -d '' secret_file; do
+              echo "  Decrypting $secret_file"
               gpg --quiet --batch --yes --decrypt --output "${secret_file%.*}" "$secret_file"
             done
 
