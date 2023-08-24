@@ -42,5 +42,5 @@ jobs:
             echo "Deploying $workdir"
 
             cd "$workdir"
-            docker compose --context remote up -d
+            docker --context remote compose up -d
           done
