@@ -1,0 +1,6 @@
+services:
+  app:
+    image: ghcr.io/approvers/ichiyo_ai:v1
+    restart: always
+    env_file:
+      - .env
