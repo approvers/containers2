@@ -53,4 +53,5 @@ jobs:
             done
 
             docker --context remote compose up -d
+            cd -
           done
