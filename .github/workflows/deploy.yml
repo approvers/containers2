@@ -3,7 +3,7 @@ name: Deploy to remote server
 on:
   push:
     branches:
-      - shun-shobon/add-deploy-action
+      - main
 
 jobs:
   deploy:
