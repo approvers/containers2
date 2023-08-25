@@ -3,7 +3,7 @@ name: Deploy to remote server
 on:
   push:
     branches:
-      - shun-shobon/use-swarm-instead-of-compose
+      - main
   workflow_dispatch:
 
 jobs:
