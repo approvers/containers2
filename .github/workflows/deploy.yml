@@ -55,6 +55,6 @@ jobs:
               gpg --quiet --batch --yes --decrypt --output "${secret_file%.*}" "$secret_file"
             done
 
-            docker --context remote stack deploy -c "$compose_file" "$stack_name"
+            docker --context remote stack deploy -c compose.yml "$stack_name"
             cd -
           done
