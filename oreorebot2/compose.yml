@@ -1,6 +1,9 @@
 services:
   app:
     image: ghcr.io/approvers/oreorebot2:v1
-    restart: always
     env_file:
       - .env
+    deploy:
+      restart_policy:
+        delay: 5s
+        max_attempts: 3
