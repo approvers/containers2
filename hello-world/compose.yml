@@ -1,7 +1,19 @@
 services:
-  hello_world:
+  app:
     image: debian:latest
-    command: bash -c 'while true; do echo "Hello World"; sleep 1; done'
-    restart: always
-    env_file:
-      - .env
+    command:
+      - bash
+      - -c
+      - while true; do echo "$$(date) - $$(cat /run/secrets/my-secret)"; sleep 30; done
+    secrets:
+      - my-secret
+    deploy:
+      replicas: 2
+      restart_policy:
+        delay: 5s
+        # これを設定しないと無限にリトライしてしまう
+        max_attempts: 3
+
+secrets:
+  my-secret:
+    file: ./my-secret.txt
