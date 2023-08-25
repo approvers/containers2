@@ -5,6 +5,8 @@ services:
       - bash
       - -c
       - while true; do echo "$$(date) - $$(cat /run/secrets/my-secret)"; sleep 30; done
+    environment:
+      - TZ=Asia/Tokyo
     secrets:
       - my-secret
     deploy:
