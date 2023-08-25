@@ -46,13 +46,15 @@ jobs:
           find . -name compose.yml -type f -maxdepth 2 -print0 | while IFS= read -r -d '' compose_file; do
             workdir=$(dirname "$compose_file")
             cd "$workdir"
-            echo "Deploying $workdir"
+
+            stack_name=$(basename "$workdir")
+            echo "Deploying $stack_name"
 
             find . -name '*.secret' -type f -print0 | while IFS= read -r -d '' secret_file; do
-              echo "  Decrypting $secret_file"
+              echo "Decrypting $secret_file"
               gpg --quiet --batch --yes --decrypt --output "${secret_file%.*}" "$secret_file"
             done
 
-            docker --context remote compose up -d
+            docker --context remote stack deploy -c "$compose_file" "$stack_name"
             cd -
           done
