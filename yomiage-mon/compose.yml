@@ -1,0 +1,16 @@
+services:
+  app:
+    image: ghcr.io/approvers/yomiagemon:0.1
+    env_file:
+      - .env
+    deploy:
+      restart_policy:
+        delay: 5s
+        max_attempts: 3
+    depends_on:
+      - voicevox
+  voicevox:
+    image: voicevox/voicevox_engine:cpu-ubuntu20.04-0.14.4
+    restart: unless-stopped
+    expose:
+      - 50021
