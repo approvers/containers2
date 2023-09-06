@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/approvers/yomiagemon:0.1
+    image: ghcr.io/approvers/yomiage-mon:0.1
     env_file:
       - .env
     deploy:
