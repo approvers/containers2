@@ -15,5 +15,3 @@ services:
       restart_policy:
         delay: 5s
         max_attempts: 3
-    expose:
-      - 50021
