@@ -11,6 +11,9 @@ services:
       - voicevox
   voicevox:
     image: voicevox/voicevox_engine:cpu-ubuntu20.04-0.14.4
-    restart: unless-stopped
+    deploy:
+      restart_policy:
+        delay: 5s
+        max_attempts: 3
     expose:
       - 50021
