@@ -58,3 +58,6 @@ jobs:
             docker --context remote stack deploy -c compose.yml "$stack_name"
             cd -
           done
+
+      - name: Prune | Docker image
+        run: docker image prune -a --force
