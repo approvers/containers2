@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/approvers/ichiyo_ai:v1.11.1
+    image: ghcr.io/approvers/ichiyo_ai:v1.12.2
     env_file:
       - .env
     deploy:
