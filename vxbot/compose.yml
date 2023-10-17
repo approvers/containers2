@@ -1,0 +1,9 @@
+services:
+  app:
+    image: ghcr.io/raiga0310/vxbot
+    env_file:
+      - .secret
+    deploy:
+      restart_policy:
+        delay: 5s
+        max_attempts: 5
