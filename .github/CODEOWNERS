@@ -1,5 +1,0 @@
-compose.yml @approvers/containers2-team
-
-.github/workflows/deploy.yml @shun-shobon
-
-.github/workflows/auto-label-sync.yml @m1sk9
