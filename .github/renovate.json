@@ -1,9 +1,35 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>m1sk9/renovate-config"
+  "automergeStrategy": "auto",
+  "semanticCommitScope": "deps",
+  "semanticCommitType": "chore",
+  "autoApprove": true,
+  "automerge": true,
+  "dependencyDashboard": true,
+  "ignoreTests": false,
+  "prConcurrentLimit": 10,
+  "minimumReleaseAge": "1 days",
+  "reviewers": ["team:containers2-team"],
+  "packageRules": [
+    {
+      "groupName": "Auto merge & approve disable rules",
+      "matchUpdateTypes": ["major", "rollback"],
+      "autoApprove": false,
+      "automerge": false
+    }
   ],
-  "addLabels": [
-    "renovate"
-  ]
+  "rollback": {
+    "branchTopic": "renovate-{{{depNameSanitized}}}-rollback",
+    "commitMessageAction": "Roll back",
+    "semanticCommitType": "fix(deps)"
+  },
+  "vulnerabilityAlerts": {
+    "groupName": "Renovate vulnerability alerts",
+    "schedule": ["at any time"],
+    "dependencyDashboardApproval": false,
+    "rangeStrategy": "update-lockfile",
+    "commitMessageSuffix": "[SECURITY]",
+    "branchTopic": "renovate-{{{datasource}}}-{{{depName}}}--vulnerability",
+    "prCreation": "immediate"
+  }
 }
