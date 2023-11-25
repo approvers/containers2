@@ -1,0 +1,9 @@
+services:
+  app:
+    image: ghcr.io/approvers/ichiyo_ai:v1.16.0
+    env_file:
+      - .env
+    deploy:
+      restart_policy:
+        delay: 5s
+        max_attempts: 3
