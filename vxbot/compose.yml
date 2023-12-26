@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/raiga0310/vxbot:latest
+    image: ghcr.io/raiga0310/vxbot:0.1.0
     env_file:
       - .secret
     deploy:
