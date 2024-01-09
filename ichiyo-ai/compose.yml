@@ -3,6 +3,8 @@ services:
     image: ghcr.io/approvers/ichiyo_ai:v2.0.0
     env_file:
       - .env
+    logging:
+      driver: loki
     deploy:
       restart_policy:
         delay: 5s
