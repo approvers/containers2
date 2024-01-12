@@ -8,7 +8,6 @@
   "dependencyDashboard": true,
   "ignoreTests": false,
   "prConcurrentLimit": 10,
-  "minimumReleaseAge": "1 days",
   "reviewers": ["team:containers2-team"],
   "packageRules": [
     {
@@ -31,5 +30,6 @@
     "commitMessageSuffix": "[SECURITY]",
     "branchTopic": "renovate-{{{datasource}}}-{{{depName}}}--vulnerability",
     "prCreation": "immediate"
-  }
+  },
+  "extends": [":timezone(Asia/Tokyo)"]
 }
