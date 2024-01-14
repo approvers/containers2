@@ -1,6 +1,5 @@
 name: Auto Label Sync
 
-
 on:
   push:
     branches:
@@ -11,7 +10,7 @@ on:
 
 jobs:
   label-sync:
-    name: Labeler
+    name: Label Sync
     runs-on: ubuntu-latest
     steps:
       - name: checkout
