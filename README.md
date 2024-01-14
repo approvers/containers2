@@ -1,6 +1,6 @@
 # Containers2
 
-[![Deploy to remote server](https://github.com/approvers/containers2/actions/workflows/deploy.yml/badge.svg)](https://github.com/approvers/containers2/actions/workflows/deploy.yml)
+[![Deploy to remote server](https://github.com/approvers/containers2/actions/workflows/deploy.yaml/badge.svg)](https://github.com/approvers/containers2/actions/workflows/deploy.yaml)
 
 限界開発鯖共有サーバーでホストするコンテナの各種 Compose ファイルや設定ファイルを管理するリポジトリです．
 旧[approvers/containers](https://github.com/approvers/containers)の後継です．
