@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'compose.yml'
-      - 'compose.yaml'
+      - '**/compose.yml'
+      - '**/compose.yaml'
   workflow_dispatch:
 
 jobs:
