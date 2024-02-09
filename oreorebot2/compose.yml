@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/approvers/oreorebot2:v1.50.0
+    image: ghcr.io/approvers/oreorebot2:v1.51.2
     env_file:
       - .env
     deploy:
