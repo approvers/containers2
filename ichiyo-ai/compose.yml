@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/approvers/ichiyo_ai:v2.3.1
+    image: ghcr.io/approvers/ichiyo_ai:v2.4.0
     env_file:
       - .env
     logging:
