@@ -1,0 +1,14 @@
+services:
+  bot:
+    image: ghcr.io/m1sk9/gcp_controller_bot:v1.0.3
+    restart: always
+    env_file:
+      - .env
+    configs:
+      - source: gcp_auth_file
+        target: ./.env-files/approvers-mc-server-ea7077c683e7.json
+
+configs:
+  gcp_auth_file:
+    files:
+      - ./approvers-mc-server-ea7077c683e7.json
