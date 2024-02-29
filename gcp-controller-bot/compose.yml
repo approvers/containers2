@@ -10,5 +10,4 @@ services:
 
 configs:
   gcp_auth_file:
-    files:
-      - ./approvers-mc-server-ea7077c683e7.json
+    file: ./approvers-mc-server-ea7077c683e7.json
