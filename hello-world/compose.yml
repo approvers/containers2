@@ -13,8 +13,6 @@ services:
       replicas: 2
       restart_policy:
         delay: 5s
-        # これを設定しないと無限にリトライしてしまう
-        max_attempts: 3
 
 secrets:
   my-secret:
